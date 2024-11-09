@@ -17,7 +17,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-activity-rian
+  name: k8s-activity-navyjane
   labels:
     app: nginx
 spec:
