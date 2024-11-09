@@ -33,7 +33,7 @@ spec:
       initContainers:
         - name: init-html
           image: curlimages/curl
-          command: ["sh", "-c", "curl -o /usr/share/nginx/html/index.html https://raw.githubusercontent.com/Riangalicha123/my-web-app/main/index.html"]
+          command: ["sh", "-c", "curl -o /usr/share/nginx/html/index.html https://raw.githubusercontent.com/navyjanecleofe/navykubernetes/main/index.html"]
           volumeMounts:
             - name: html-volume
               mountPath: /usr/share/nginx/html
