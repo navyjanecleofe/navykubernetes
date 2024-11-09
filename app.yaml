@@ -5,13 +5,13 @@ metadata:
   labels:
     app: nginx
 spec:
-  type: NodePort  # Change from LoadBalancer to NodePort
+  type: NodePort  # NodePort type for exposing the service
   selector:
     app: nginx
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 32723  # Specify the NodePort (can be any port from 30000-32767 range)
+      nodePort: 32723  # Ensure this is in the range 30000-32767
 
 ---
 apiVersion: apps/v1
@@ -33,7 +33,10 @@ spec:
       initContainers:
         - name: init-html
           image: curlimages/curl
-          command: ["sh", "-c", "curl -o /usr/share/nginx/html/index.html https://raw.githubusercontent.com/navyjanecleofe/navykubernetes/main/index.html"]
+          command:
+            - "sh"
+            - "-c"
+            - "curl -o /usr/share/nginx/html/index.html https://raw.githubusercontent.com/navyjanecleofe/navykubernetes/main/index.html"
           volumeMounts:
             - name: html-volume
               mountPath: /usr/share/nginx/html
@@ -48,4 +51,3 @@ spec:
       volumes:
         - name: html-volume
           emptyDir: {}
-Write to Rian Galicha
